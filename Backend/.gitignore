@@ -1,0 +1,66 @@
+# -------------------------------------------------------------------
+# Dependency / Node-specific Folders & Files
+# -------------------------------------------------------------------
+# Dependency directory
+/node_modules
+# Yarn PnP files
+.pnp.*
+# Lock files
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# pnpm
+/pnpm-lock.yaml
+
+# -------------------------------------------------------------------
+# Build Output & Compilation
+# -------------------------------------------------------------------
+# TypeScript compilation output (if using TypeScript)
+/dist
+/build
+/out
+# Logs and crash dumps
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Editor/IDE auto-generated files
+.DS_Store
+Thumbs.db
+
+# -------------------------------------------------------------------
+# Environment & Configuration (Crucial for Backends)
+# -------------------------------------------------------------------
+# Sensitive environment variables (DO NOT COMMIT!)
+.env
+.env.*
+# VS Code settings (optional, but often good to ignore)
+.vscode/
+
+# -------------------------------------------------------------------
+# Testing & Mocking
+# -------------------------------------------------------------------
+/coverage
+/test-results.json
+*.tsbuildinfo
+
+# -------------------------------------------------------------------
+# Operating System & Editor-Specific Files
+# -------------------------------------------------------------------
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+# Emacs
+*~
+# Vim
+*.swp
+*.swo
+
+# -------------------------------------------------------------------
+# Local Database/Storage (if applicable)
+# -------------------------------------------------------------------
+# Example for a local SQLite database file
+*.sqlite
+/data.db
