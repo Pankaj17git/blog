@@ -2,7 +2,7 @@
 const { validationResult } = require('express-validator');
 const User = require('../models/User.model');
 
-exports.register = async (req, res) => {
+const register = async (req, res) => {
   // express-validator results
   const errors = validationResult(req);
   if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
@@ -29,7 +29,7 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
@@ -54,12 +54,12 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.getProfile = async (req, res) => {
+const getProfile = async (req, res) => {
   // req.user set by auth middleware
   res.json({ user: req.user });
 };
 
-exports.updateProfile = async (req, res) => {
+const updateProfile = async (req, res) => {
   try {
     const allowed = ['username', 'bio', 'avatarUrl'];
     allowed.forEach(field => {
@@ -74,7 +74,7 @@ exports.updateProfile = async (req, res) => {
   }
 };
 
-exports.deleteAccount = async (req, res) => {
+const deleteAccount = async (req, res) => {
   try {
     await req.user.remove();
     res.json({ message: 'Account deleted' });
@@ -83,3 +83,8 @@ exports.deleteAccount = async (req, res) => {
     res.status(500).json({ message: 'Unable to delete account' });
   }
 };
+
+
+module.exports = {
+  register, login, getProfile, updateProfile, deleteAccount
+}

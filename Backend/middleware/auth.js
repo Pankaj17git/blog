@@ -2,9 +2,10 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User.model');
 
-exports.authenticate = async (req, res, next) => {
+authenticate = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
+    console.log(authHeader)
     if (!authHeader || !authHeader.startsWith('Bearer '))
       return res.status(401).json({ message: 'No token provided' });
 
@@ -23,9 +24,13 @@ exports.authenticate = async (req, res, next) => {
 /**
  * roleCheck('admin'), roleCheck('author'), or roleCheck('admin','author')
  */
-exports.roleCheck = (...allowedRoles) => (req, res, next) => {
+const roleCheck = (...allowedRoles) => (req, res, next) => {
   if (!req.user) return res.status(401).json({ message: 'Not authenticated' });
   if (!allowedRoles.includes(req.user.role))
     return res.status(403).json({ message: 'Forbidden - insufficient role' });
   next();
 };
+
+module.exports = {
+  authenticate, roleCheck
+}
