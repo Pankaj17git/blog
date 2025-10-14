@@ -1,9 +1,13 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
+const path = require('path');
 const morgan = require('morgan');
+
+
 const authRoutes = require('./routes/auth.route');
 const postsRoutes = require('./routes/posts.route');
+const uploadRoutes = require('./routes/upload.route')
 
 
 
@@ -31,6 +35,11 @@ app.use((err, req, res, next) => {
   console.error(err.stack || err);
   res.status(500).json({ message: 'Something went wrong' });
 });
+
+// Static files for images
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
+
+app.use('/api/upload', uploadRoutes);
 
 // routes
 app.use('/api/auth', authRoutes);

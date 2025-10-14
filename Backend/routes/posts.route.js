@@ -13,7 +13,7 @@ router.post('/',
     body('title').isLength({ min: 3 }).withMessage('Title min 3 chars'),
     body('content').isLength({ min: 10 }).withMessage('Content min 10 chars'),
     body('tags').optional().isArray(),
-    body('thumbnailUrl').optional().isURL().withMessage('thumbnailUrl must be a valid URL'),
+    body('thumbnailUrl').optional(),
     body('isPublished').optional().isBoolean()
   ],
   postCtrl.createPost

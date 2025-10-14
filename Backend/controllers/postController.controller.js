@@ -33,7 +33,8 @@ exports.createPost = async (req, res) => {
       publishedAt: isPublished ? new Date() : null
     });
     await post.save();
-    const populated = await post.populate('author', 'username email role').execPopulate();
+    
+    const populated = await post.populate('author', 'username email role');
     return res.status(201).json({ post: populated });
   } catch (err) {
     console.error(err);
@@ -124,7 +125,7 @@ exports.updatePost = async (req, res) => {
     if (!post.isPublished) post.publishedAt = null;
 
     await post.save();
-    const populated = await post.populate('author', 'username role').execPopulate();
+    const populated = await post.populate('author', 'username role');
     return res.json({ post: populated });
   } catch (err) {
     console.error(err);
@@ -143,7 +144,7 @@ exports.deletePost = async (req, res) => {
       return res.status(403).json({ message: 'Forbidden' });
     }
 
-    await post.remove();
+    await Post.findByIdAndDelete(id);
     return res.json({ message: 'Post deleted' });
   } catch (err) {
     console.error(err);
@@ -190,7 +191,7 @@ exports.addComment = async (req, res) => {
     post.comments.push(comment);
     await post.save();
     const added = post.comments[post.comments.length - 1];
-    await post.populate('comments.author', 'username').execPopulate(); // populate latest
+    await post.populate('comments.author', 'username'); // populate latest
     return res.status(201).json({ comment: added });
   } catch (err) {
     console.error(err);
@@ -211,8 +212,9 @@ exports.deleteComment = async (req, res) => {
     if (!comment.author.equals(req.user._id) && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Forbidden' });
     }
-
-    comment.remove();
+ 
+    post.comments = post.comments.filter((comment) => comment._id.toString() !== commentId.toString());
+    
     await post.save();
     return res.json({ message: 'Comment deleted' });
   } catch (err) {

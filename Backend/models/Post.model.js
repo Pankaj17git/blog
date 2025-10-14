@@ -32,12 +32,9 @@ const PostSchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
   tags: [{ type: String, lowercase: true, trim: true }],
   category: { type: String, trim: true, index: true },
-  thumbnailUrl: {
-    type: String,
-    validate: {
-      validator: v => !v || /^https?:\/\//i.test(v),
-      message: 'thumbnailUrl must be a valid URL'
-    }
+  images: {
+    type: [String],
+    default: [],
   },
   likes: [{ type: Schema.Types.ObjectId, ref: 'User' }], // array of user ids
   comments: [CommentSchema],
