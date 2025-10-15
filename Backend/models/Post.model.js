@@ -32,9 +32,8 @@ const PostSchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
   tags: [{ type: String, lowercase: true, trim: true }],
   category: { type: String, trim: true, index: true },
-  images: {
-    type: [String],
-    default: [],
+  thumbnailUrl: { 
+    type: String,
   },
   likes: [{ type: Schema.Types.ObjectId, ref: 'User' }], // array of user ids
   comments: [CommentSchema],
