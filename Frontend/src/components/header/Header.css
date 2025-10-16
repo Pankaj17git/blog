@@ -1,0 +1,157 @@
+/* Header Base */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+/* Header Container */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-icon {
+  color: #2563eb;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Desktop Navigation */
+.nav-desktop {
+  display: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #2563eb;
+  background-color: #f3f4f6;
+}
+
+.nav-link.active {
+  color: #2563eb;
+  background-color: #e0e7ff;
+}
+
+/* Menu Button (Mobile Only) */
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.menu-button .icon {
+  width: 22px;
+  height: 22px;
+  color: #374151;
+}
+
+/* Mobile Navigation */
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #e5e7eb;
+  padding: 0.5rem 1rem 1rem 1rem;
+  background-color: #ffffff;
+}
+
+.nav-link-mobile {
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem 0.75rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.mobile-auth {
+  display: flex;
+  align-items: center;
+}
+
+
+.mobile-auth button,
+.mobile-auth a {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151; /* gray-700 */
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.mobile-auth button:hover,
+.mobile-auth a:hover {
+  color: #2563eb; /* blue-600 */
+  background-color: #f9fafb; /* gray-50 */
+}
+
+
+.nav-link-mobile:hover {
+  color: #2563eb;
+  background-color: #f3f4f6;
+}
+
+.nav-link-mobile.active {
+  color: #2563eb;
+  background-color: #e0e7ff;
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) {
+  .nav-desktop {
+    display: flex;
+  }
+
+  .menu-button {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+}

@@ -1,0 +1,13 @@
+/* Layout Base */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb; /* same as bg-background in Tailwind */
+}
+
+/* Main content area expands to fill remaining space */
+.layout-main {
+  flex: 1;
+  width: 100%;
+}
